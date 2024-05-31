@@ -35,7 +35,9 @@ fun Calculator (
                 .align(Alignment.TopStart),
         ) {
             Text(
-                text = state.number1 + (state.operation ?: "") + state.number2,
+                text = state.number2.ifEmpty {
+                    state.number1
+                },
                 textAlign = TextAlign.End,
                 modifier = Modifier
                     .fillMaxWidth()
@@ -73,7 +75,7 @@ fun Calculator (
                         .aspectRatio(1f)
                         .weight(1f),
                     onClick = {
-                        onAction(CalculatorAction.Clear)
+                        onAction(CalculatorAction.PlusMinus)
                     }
                 )
                 CalculatorButton(
@@ -83,7 +85,7 @@ fun Calculator (
                         .aspectRatio(1f)
                         .weight(1f),
                     onClick = {
-                        onAction(CalculatorAction.Clear)
+                        onAction(CalculatorAction.Percentage)
                     }
                 )
                 CalculatorButton(
