@@ -19,7 +19,6 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.jc_calculator.ui.theme.Color1
-import com.example.jc_calculator.ui.theme.Color2
 import com.example.jc_calculator.ui.theme.Color3
 
 @Composable
@@ -33,29 +32,34 @@ fun Calculator (
         Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .align(Alignment.BottomCenter),
-            verticalArrangement = Arrangement.spacedBy(buttonSpacing)
+                .align(Alignment.TopStart),
         ) {
             Text(
                 text = state.number1 + (state.operation ?: "") + state.number2,
                 textAlign = TextAlign.End,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(vertical = 32.dp),
-                fontWeight = FontWeight.Light,
+                    .padding(top = 16.dp)
+                    .padding(bottom = 128.dp),
+                fontWeight = FontWeight.Bold,
                 fontSize = 80.sp,
-                color = Color.White,
+                color = Color.Black,
                 maxLines = 2
             )
 
             Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.spacedBy (buttonSpacing)
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(top = 64.dp)
+                    .padding(bottom = 4.dp),
+                horizontalArrangement = Arrangement.spacedBy(buttonSpacing)
+
             ) {
                 CalculatorButton(
                     symbol = "C",
+                    textColor = Color.hsv(0F, 0.47F, 1F),
                     modifier = Modifier
-                        .background(Color2)
+                        .background(Color1)
                         .aspectRatio(1f)
                         .weight(1f),
                     onClick = {
@@ -65,7 +69,7 @@ fun Calculator (
                 CalculatorButton(
                     symbol = "+/-",
                     modifier = Modifier
-                        .background(Color2)
+                        .background(Color1)
                         .aspectRatio(1f)
                         .weight(1f),
                     onClick = {
@@ -75,7 +79,7 @@ fun Calculator (
                 CalculatorButton(
                     symbol = "%",
                     modifier = Modifier
-                        .background(Color2)
+                        .background(Color1)
                         .aspectRatio(1f)
                         .weight(1f),
                     onClick = {
@@ -94,9 +98,11 @@ fun Calculator (
                 )
             }
             Row(
-                modifier = Modifier.fillMaxWidth(),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(bottom = 4.dp),
                 horizontalArrangement = Arrangement.spacedBy (buttonSpacing)
-            ) {
+            ){
                 CalculatorButton(
                     symbol = "7",
                     modifier = Modifier
@@ -139,7 +145,9 @@ fun Calculator (
                 )
             }
             Row(
-                modifier = Modifier.fillMaxWidth(),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(bottom = 4.dp),
                 horizontalArrangement = Arrangement.spacedBy (buttonSpacing)
             ) {
                 CalculatorButton(
@@ -184,7 +192,9 @@ fun Calculator (
                 )
             }
             Row(
-                modifier = Modifier.fillMaxWidth(),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(bottom = 4.dp),
                 horizontalArrangement = Arrangement.spacedBy (buttonSpacing)
             ) {
                 CalculatorButton(
@@ -229,13 +239,15 @@ fun Calculator (
                 )
             }
             Row(
-                modifier = Modifier.fillMaxWidth(),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(bottom = 4.dp),
                 horizontalArrangement = Arrangement.spacedBy (buttonSpacing)
             ) {
                 CalculatorButton(
                     symbol = "0",
                     modifier = Modifier
-                        .background(Color2)
+                        .background(Color1)
                         .aspectRatio(2f)
                         .weight(2f),
                     onClick = {
@@ -245,7 +257,7 @@ fun Calculator (
                 CalculatorButton(
                     symbol = ".",
                     modifier = Modifier
-                        .background(Color2)
+                        .background(Color1)
                         .aspectRatio(1f)
                         .weight(1f),
                     onClick = {
@@ -259,7 +271,7 @@ fun Calculator (
                         .aspectRatio(1f)
                         .weight(1f),
                     onClick = {
-                        //onAction(CalculatorAction.Operation())
+                        onAction(CalculatorAction.Calculate)
                     }
                 )
             }
